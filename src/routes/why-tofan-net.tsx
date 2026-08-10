@@ -36,7 +36,7 @@ function WhyPage() {
       <section className="mx-auto max-w-6xl px-5 pb-10">
         <div className="grid gap-6 sm:grid-cols-2">
           {reasons.map((r) => (
-            <article key={r.title} className="card-lux flex gap-5 rounded-md p-7">
+            <article key={r.title} className="card-lux flex gap-5 rounded-3xl p-7">
               <r.icon className="mt-1 h-6 w-6 shrink-0 text-primary" />
               <div className="min-w-0">
                 <h2 className="text-sm uppercase tracking-[0.18em] text-gold">{r.title}</h2>

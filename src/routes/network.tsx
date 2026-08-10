@@ -42,7 +42,7 @@ function NetworkPage() {
         lead="Our wireless backbone starts in Herat city and reaches outward through districts and villages — a connected chain of towers, relays and local teams."
       />
       <section className="relative mx-auto max-w-6xl overflow-hidden px-5">
-        <div className="card-lux relative overflow-hidden rounded-md">
+        <div className="card-lux relative overflow-hidden rounded-3xl">
           <StormNetwork density={1.2} className="h-60 w-full sm:h-80" />
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
             <p className="text-xs uppercase tracking-[0.4em] text-primary">
@@ -54,7 +54,7 @@ function NetworkPage() {
       <section className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid gap-6 md:grid-cols-3">
           {layers.map((l, i) => (
-            <article key={l.label} className="card-lux rounded-md p-7">
+            <article key={l.label} className="card-lux rounded-3xl p-7">
               <span className="font-display text-3xl text-gold">0{i + 1}</span>
               <h2 className="mt-4 text-sm uppercase tracking-[0.2em]">{l.label}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{l.text}</p>

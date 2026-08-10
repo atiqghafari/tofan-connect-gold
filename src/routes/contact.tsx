@@ -28,12 +28,12 @@ function ContactPage() {
       />
       <section className="mx-auto max-w-4xl px-5 pb-10">
         <div className="grid gap-6 sm:grid-cols-2">
-          <a href="tel:0796722464" className="card-lux block rounded-md p-8">
+          <a href="tel:0796722464" className="card-lux block rounded-3xl p-8">
             <Phone className="h-6 w-6 text-primary" />
             <h2 className="mt-5 text-xs uppercase tracking-[0.24em] text-muted-foreground">Phone</h2>
             <p className="mt-2 font-display text-2xl text-gold">0796722464</p>
           </a>
-          <div className="card-lux rounded-md p-8">
+          <div className="card-lux rounded-3xl p-8">
             <MapPin className="h-6 w-6 text-primary" />
             <h2 className="mt-5 text-xs uppercase tracking-[0.24em] text-muted-foreground">Office</h2>
             <p className="mt-2 text-sm uppercase leading-relaxed tracking-[0.14em]">
