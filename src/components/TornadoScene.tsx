@@ -60,8 +60,8 @@ export function TornadoScene({ className }: Props) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       horizon = h * 0.82;
-      baseY = h * 0.56;
-      touchX = w * 0.42;
+      baseY = h * 0.6;
+      touchX = w * 0.63;
 
       const scale = Math.max(w, h);
 
@@ -111,7 +111,7 @@ export function TornadoScene({ className }: Props) {
     };
 
     const funnelW = (yy: number) => {
-      const top = Math.min(w * 0.06, h * 0.05);
+      const top = Math.min(w * 0.035, h * 0.03);
       const taper = Math.pow(1 - yy, 1.25);
       const wobble = 1 + Math.sin(t * 0.03 + yy * 9) * 0.07;
       return (top * taper + 2.5) * wobble;
@@ -155,9 +155,9 @@ export function TornadoScene({ className }: Props) {
 
       // body
       const grd = ctx.createLinearGradient(0, baseY, 0, groundY);
-      grd.addColorStop(0, "rgba(72, 76, 84, 0.9)");
-      grd.addColorStop(0.45, "rgba(104, 106, 110, 0.7)");
-      grd.addColorStop(1, "rgba(138, 132, 120, 0.45)");
+      grd.addColorStop(0, "rgba(78, 82, 90, 0.72)");
+      grd.addColorStop(0.45, "rgba(112, 114, 118, 0.6)");
+      grd.addColorStop(1, "rgba(146, 140, 126, 0.34)");
       ctx.beginPath();
       for (let i = 0; i <= steps; i++) {
         const yy = i / steps;
