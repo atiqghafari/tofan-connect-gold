@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { TornadoScene } from "@/components/TornadoScene";
 import { StormNetwork } from "@/components/StormNetwork";
 import { Radio, Share2, Wifi, Building2 } from "lucide-react";
 
@@ -29,7 +30,8 @@ function Index() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden">
-        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-90" />
+        <TornadoScene className="pointer-events-none absolute inset-0 h-full w-full" />
+        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-screen" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
