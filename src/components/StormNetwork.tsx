@@ -97,8 +97,8 @@ export function StormNetwork({ density = 1, className }: Props) {
       ctx.shadowBlur = 20;
       ctx.shadowColor = `rgba(240, 210, 130, ${0.85 * flash})`;
       ctx.beginPath();
-      ctx.moveTo(bolt.segs[0][0], bolt.segs[0][1]);
-      for (let i = 1; i < bolt.segs.length; i++) ctx.lineTo(bolt.segs[i][0], bolt.segs[i][1]);
+      ctx.moveTo(bolt.segs[0]![0], bolt.segs[0]![1]);
+      for (let i = 1; i < bolt.segs.length; i++) ctx.lineTo(bolt.segs[i]![0], bolt.segs[i]![1]);
       ctx.stroke();
       // branch glow
       ctx.lineWidth = 0.7;
