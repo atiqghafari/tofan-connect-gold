@@ -118,15 +118,33 @@ export function TornadoScene({ className }: Props) {
 
     const drawWallCloud = () => {
       const cx = funnelX(0);
-      const cy = baseY - h * 0.02;
-      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h) * 0.3);
-      g.addColorStop(0, "rgba(22, 23, 26, 0.95)");
-      g.addColorStop(0.45, "rgba(30, 32, 36, 0.6)");
-      g.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, Math.max(w, h) * 0.3, h * 0.12, 0, 0, Math.PI * 2);
-      ctx.fill();
+      const cy = baseY - h * 0.03;
+      // several soft, overlapping lumps → organic cloud base, no hard edges
+      const lumps: [number, number, number, number][] = [
+        [-0.22, -0.02, 0.3, 0.5],
+        [0.06, -0.05, 0.36, 0.45],
+        [0.3, 0.0, 0.26, 0.42],
+        [-0.46, 0.02, 0.24, 0.34],
+        [0.52, 0.02, 0.24, 0.3],
+        [0.0, 0.035, 0.18, 0.6],
+      ];
+      for (const [ox, oy, rr, op] of lumps) {
+        const x = cx + ox * w + Math.sin(t * 0.004 + ox * 6) * 12;
+        const y = cy + oy * h + Math.sin(t * 0.006 + ox * 3) * 5;
+        const R = rr * w;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(1, 0.34);
+        const g = ctx.createRadialGradient(0, 0, 0, 0, 0, R);
+        g.addColorStop(0, `rgba(20, 21, 24, ${op})`);
+        g.addColorStop(0.5, `rgba(30, 32, 36, ${op * 0.5})`);
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(0, 0, R, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
     };
 
     const drawFunnel = () => {
