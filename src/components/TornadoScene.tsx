@@ -111,7 +111,7 @@ export function TornadoScene({ className }: Props) {
     };
 
     const funnelW = (yy: number) => {
-      const top = Math.min(w, h) * 0.055;
+      const top = Math.min(w, h) * 0.038;
       const taper = Math.pow(1 - yy, 1.25);
       const wobble = 1 + Math.sin(t * 0.03 + yy * 9) * 0.07;
       return (top * taper + 2.5) * wobble;
@@ -302,15 +302,23 @@ export function TornadoScene({ className }: Props) {
 
       // sky
       const sky = ctx.createLinearGradient(0, 0, 0, horizon);
-      sky.addColorStop(0, "#15171b");
-      sky.addColorStop(0.42, "#33373d");
-      sky.addColorStop(0.78, "#585c62");
-      sky.addColorStop(1, "#8e8a7c");
+      sky.addColorStop(0, "#1d2126");
+      sky.addColorStop(0.42, "#4c5158");
+      sky.addColorStop(0.78, "#787c82");
+      sky.addColorStop(1, "#b3ac97");
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, w, horizon + 2);
 
+      // heavy dark cloud mass across the top for readability
+      const mass = ctx.createLinearGradient(0, 0, 0, h * 0.62);
+      mass.addColorStop(0, "rgba(10, 11, 13, 0.92)");
+      mass.addColorStop(0.55, "rgba(16, 18, 21, 0.55)");
+      mass.addColorStop(1, "rgba(0,0,0,0)");
+
       drawMeso();
       drawShelf();
+      ctx.fillStyle = mass;
+      ctx.fillRect(0, 0, w, h * 0.62);
       drawRain();
       drawFunnel();
       drawGround();
@@ -333,7 +341,7 @@ export function TornadoScene({ className }: Props) {
       // vignette to keep text readable
       const vg = ctx.createRadialGradient(w * 0.5, h * 0.45, Math.min(w, h) * 0.2, w * 0.5, h * 0.5, Math.max(w, h) * 0.78);
       vg.addColorStop(0, "rgba(0,0,0,0.05)");
-      vg.addColorStop(1, "rgba(0,0,0,0.6)");
+      vg.addColorStop(1, "rgba(0,0,0,0.38)");
       ctx.fillStyle = vg;
       ctx.fillRect(0, 0, w, h);
 
