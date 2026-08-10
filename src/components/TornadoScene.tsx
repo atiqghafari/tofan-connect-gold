@@ -62,8 +62,6 @@ export function TornadoScene({ className }: Props) {
       horizon = h * 0.82;
       baseY = h * 0.6;
       touchX = w * 0.63;
-
-      console.log("[tornado]", { w, h, touchX, baseY, horizon });
       const scale = Math.max(w, h);
 
       meso = Array.from({ length: 34 }, () => ({
