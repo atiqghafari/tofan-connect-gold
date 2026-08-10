@@ -64,13 +64,13 @@ export function TornadoScene({ className }: Props) {
       touchX = w * 0.63;
       const scale = Math.max(w, h);
 
-      meso = Array.from({ length: 34 }, () => ({
+      meso = Array.from({ length: 46 }, () => ({
         a: rand(0, Math.PI * 2),
-        r: rand(0.08, 0.62) * scale * 0.7,
-        rr: rand(0.08, 0.26) * scale * 0.55,
+        r: rand(0.05, 0.85) * scale * 0.7,
+        rr: rand(0.12, 0.42) * scale * 0.6,
         sp: rand(0.0009, 0.0026),
-        y: rand(-0.1, 0.16) * h,
-        op: rand(0.16, 0.42),
+        y: rand(-0.34, 0.06) * h,
+        op: rand(0.08, 0.24),
         g: rand(0, 1),
       }));
 
@@ -210,7 +210,7 @@ export function TornadoScene({ className }: Props) {
 
     const drawMeso = () => {
       const cx = touchX + w * 0.05;
-      const cy = baseY - h * 0.16;
+      const cy = baseY - h * 0.3;
       for (const b of meso) {
         b.a += b.sp;
         const x = cx + Math.cos(b.a) * b.r;
@@ -355,7 +355,7 @@ export function TornadoScene({ className }: Props) {
       ctx.fillStyle = mass;
       ctx.fillRect(0, 0, w, h * 0.62);
       drawRain();
-      // drawWallCloud();
+      drawWallCloud();
       drawFunnel();
       drawGround();
       drawDust();
