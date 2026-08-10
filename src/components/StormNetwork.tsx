@@ -45,8 +45,8 @@ export function StormNetwork({ density = 1, className }: Props) {
       // network links
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i];
-          const b = nodes[j];
+          const a = nodes[i]!;
+          const b = nodes[j]!;
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < 130) {
             ctx.strokeStyle = `rgba(212, 175, 90, ${0.16 * (1 - d / 130)})`;
