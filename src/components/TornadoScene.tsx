@@ -60,7 +60,7 @@ export function TornadoScene({ className }: Props) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       horizon = h * 0.82;
-      baseY = h * 0.5;
+      baseY = h * 0.56;
       touchX = w * 0.42;
 
       const scale = Math.max(w, h);
@@ -71,7 +71,7 @@ export function TornadoScene({ className }: Props) {
         rr: rand(0.08, 0.26) * scale * 0.55,
         sp: rand(0.0009, 0.0026),
         y: rand(-0.1, 0.16) * h,
-        op: rand(0.05, 0.2),
+        op: rand(0.16, 0.42),
         g: rand(0, 1),
       }));
 
@@ -81,7 +81,7 @@ export function TornadoScene({ className }: Props) {
         rx: rand(0.14, 0.42) * w,
         ry: rand(0.05, 0.13) * h,
         sp: rand(0.06, 0.22),
-        op: rand(0.05, 0.16),
+        op: rand(0.12, 0.3),
       }));
 
       dust = Array.from({ length: 150 }, () => ({
@@ -111,10 +111,10 @@ export function TornadoScene({ className }: Props) {
     };
 
     const funnelW = (yy: number) => {
-      const top = Math.min(w, h) * 0.13;
-      const taper = Math.pow(1 - yy, 1.7);
+      const top = Math.min(w, h) * 0.055;
+      const taper = Math.pow(1 - yy, 1.25);
       const wobble = 1 + Math.sin(t * 0.03 + yy * 9) * 0.07;
-      return (top * taper + 5) * wobble;
+      return (top * taper + 2.5) * wobble;
     };
 
     const drawFunnel = () => {
@@ -302,10 +302,10 @@ export function TornadoScene({ className }: Props) {
 
       // sky
       const sky = ctx.createLinearGradient(0, 0, 0, horizon);
-      sky.addColorStop(0, "#0a0b0d");
-      sky.addColorStop(0.42, "#1a1c20");
-      sky.addColorStop(0.78, "#2b2d31");
-      sky.addColorStop(1, "#4a4740");
+      sky.addColorStop(0, "#15171b");
+      sky.addColorStop(0.42, "#33373d");
+      sky.addColorStop(0.78, "#585c62");
+      sky.addColorStop(1, "#8e8a7c");
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, w, horizon + 2);
 
@@ -332,8 +332,8 @@ export function TornadoScene({ className }: Props) {
 
       // vignette to keep text readable
       const vg = ctx.createRadialGradient(w * 0.5, h * 0.45, Math.min(w, h) * 0.2, w * 0.5, h * 0.5, Math.max(w, h) * 0.78);
-      vg.addColorStop(0, "rgba(0,0,0,0.15)");
-      vg.addColorStop(1, "rgba(0,0,0,0.82)");
+      vg.addColorStop(0, "rgba(0,0,0,0.05)");
+      vg.addColorStop(1, "rgba(0,0,0,0.6)");
       ctx.fillStyle = vg;
       ctx.fillRect(0, 0, w, h);
 
