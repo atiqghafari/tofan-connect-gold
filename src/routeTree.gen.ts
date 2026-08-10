@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as NetworkRouteImport } from './routes/network'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WhyTofanNetRouteImport } from './routes/why-tofan-net'
@@ -17,6 +18,11 @@ import { Route as WhyTofanNetRouteImport } from './routes/why-tofan-net'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NetworkRoute = NetworkRouteImport.update({
@@ -37,12 +43,14 @@ const WhyTofanNetRoute = WhyTofanNetRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/why-tofan-net': typeof WhyTofanNetRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/why-tofan-net': typeof WhyTofanNetRoute
@@ -50,20 +58,23 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/network': typeof NetworkRoute
   '/services': typeof ServicesRoute
   '/why-tofan-net': typeof WhyTofanNetRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/network' | '/services' | '/why-tofan-net'
+  fullPaths: '/' | '/contact' | '/network' | '/services' | '/why-tofan-net'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/network' | '/services' | '/why-tofan-net'
-  id: '__root__' | '/' | '/network' | '/services' | '/why-tofan-net'
+  to: '/' | '/contact' | '/network' | '/services' | '/why-tofan-net'
+  id:
+    '__root__' | '/' | '/contact' | '/network' | '/services' | '/why-tofan-net'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   NetworkRoute: typeof NetworkRoute
   ServicesRoute: typeof ServicesRoute
   WhyTofanNetRoute: typeof WhyTofanNetRoute
@@ -76,6 +87,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/network': {
@@ -104,6 +122,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   NetworkRoute: NetworkRoute,
   ServicesRoute: ServicesRoute,
   WhyTofanNetRoute: WhyTofanNetRoute,
