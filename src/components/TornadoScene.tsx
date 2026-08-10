@@ -334,8 +334,8 @@ export function TornadoScene({ className }: Props) {
       const sky = ctx.createLinearGradient(0, 0, 0, horizon);
       sky.addColorStop(0, "#1d2126");
       sky.addColorStop(0.42, "#4c5158");
-      sky.addColorStop(0.78, "#787c82");
-      sky.addColorStop(1, "#b3ac97");
+      sky.addColorStop(0.78, "#6b6f75");
+      sky.addColorStop(1, "#9b9482");
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, w, horizon + 2);
 
