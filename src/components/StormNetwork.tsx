@@ -40,7 +40,7 @@ export function StormNetwork({ density = 1, className }: Props) {
     // lightning
     let flash = 0;
     let nextFlash = 280 + Math.random() * 500;
-    let bolt: { x1: number; y1: number; x2: number; y2: number; segs: number[][] } | null = null;
+    let bolt: { x1: number; y1: number; x2: number; y2: number; segs: [number, number][] } | null = null;
 
     let cx = 0;
     let cy = 0;
@@ -79,7 +79,7 @@ export function StormNetwork({ density = 1, className }: Props) {
       const x1 = Math.random() * w;
       const x2 = x1 + (Math.random() - 0.5) * w * 0.5;
       const y2 = h * (0.45 + Math.random() * 0.4);
-      const segs: number[][] = [[x1, 0]];
+      const segs: [number, number][] = [[x1, 0]];
       const steps = 7;
       for (let s = 1; s <= steps; s++) {
         const px = x1 + (x2 - x1) * (s / steps) + (Math.random() - 0.5) * 50;
