@@ -59,6 +59,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold-1: var(--gold-1);
+  --color-gold-2: var(--gold-2);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 :root {
@@ -150,7 +154,56 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background: var(--gradient-night);
+    background-attachment: fixed;
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+}
+
+@utility text-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+}
+
+@utility card-lux {
+  background: linear-gradient(160deg, oklch(0.19 0.016 74 / 90%), oklch(0.14 0.012 70 / 90%));
+  border: 1px solid oklch(0.5 0.07 85 / 30%);
+  box-shadow: var(--shadow-gold);
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.79 0.135 85 / 65%);
+  }
+}
+
+@utility btn-royal {
+  background: var(--gradient-gold);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-gold);
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+  &:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
   }
 }
