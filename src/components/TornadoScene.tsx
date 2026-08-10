@@ -111,10 +111,23 @@ export function TornadoScene({ className }: Props) {
     };
 
     const funnelW = (yy: number) => {
-      const top = Math.min(w, h) * 0.038;
+      const top = Math.min(w * 0.06, h * 0.05);
       const taper = Math.pow(1 - yy, 1.25);
       const wobble = 1 + Math.sin(t * 0.03 + yy * 9) * 0.07;
       return (top * taper + 2.5) * wobble;
+    };
+
+    const drawWallCloud = () => {
+      const cx = funnelX(0);
+      const cy = baseY - h * 0.02;
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(w, h) * 0.3);
+      g.addColorStop(0, "rgba(22, 23, 26, 0.95)");
+      g.addColorStop(0.45, "rgba(30, 32, 36, 0.6)");
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, Math.max(w, h) * 0.3, h * 0.12, 0, 0, Math.PI * 2);
+      ctx.fill();
     };
 
     const drawFunnel = () => {
@@ -128,23 +141,23 @@ export function TornadoScene({ className }: Props) {
       for (let i = 0; i <= steps; i++) {
         const yy = i / steps;
         const y = baseY + (groundY - baseY) * yy;
-        ctx.lineTo(funnelX(yy) - funnelW(yy) * 1.5, y);
+        ctx.lineTo(funnelX(yy) - funnelW(yy) * 1.25, y);
       }
       for (let i = steps; i >= 0; i--) {
         const yy = i / steps;
         const y = baseY + (groundY - baseY) * yy;
-        ctx.lineTo(funnelX(yy) + funnelW(yy) * 1.5, y);
+        ctx.lineTo(funnelX(yy) + funnelW(yy) * 1.25, y);
       }
       ctx.closePath();
-      ctx.fillStyle = "rgba(120, 124, 132, 0.16)";
+      ctx.fillStyle = "rgba(120, 124, 132, 0.1)";
       ctx.fill();
       ctx.restore();
 
       // body
       const grd = ctx.createLinearGradient(0, baseY, 0, groundY);
-      grd.addColorStop(0, "rgba(96, 100, 108, 0.85)");
-      grd.addColorStop(0.45, "rgba(126, 128, 132, 0.78)");
-      grd.addColorStop(1, "rgba(150, 146, 138, 0.55)");
+      grd.addColorStop(0, "rgba(72, 76, 84, 0.9)");
+      grd.addColorStop(0.45, "rgba(104, 106, 110, 0.7)");
+      grd.addColorStop(1, "rgba(138, 132, 120, 0.45)");
       ctx.beginPath();
       for (let i = 0; i <= steps; i++) {
         const yy = i / steps;
@@ -320,6 +333,7 @@ export function TornadoScene({ className }: Props) {
       ctx.fillStyle = mass;
       ctx.fillRect(0, 0, w, h * 0.62);
       drawRain();
+      drawWallCloud();
       drawFunnel();
       drawGround();
       drawDust();
