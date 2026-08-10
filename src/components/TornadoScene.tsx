@@ -230,13 +230,18 @@ export function TornadoScene({ className }: Props) {
       for (const s of shelf) {
         s.x += s.sp;
         if (s.x - s.rx > w) s.x = -s.rx;
-        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.rx);
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.scale(1, s.ry / s.rx);
+        const g = ctx.createRadialGradient(0, 0, 0, 0, 0, s.rx);
         g.addColorStop(0, `rgba(74, 76, 82, ${s.op})`);
+        g.addColorStop(0.6, `rgba(60, 62, 68, ${s.op * 0.4})`);
         g.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.ellipse(s.x, s.y, s.rx, s.ry, 0, 0, Math.PI * 2);
+        ctx.arc(0, 0, s.rx, 0, Math.PI * 2);
         ctx.fill();
+        ctx.restore();
       }
     };
 
