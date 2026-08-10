@@ -355,7 +355,7 @@ export function TornadoScene({ className }: Props) {
       ctx.fillStyle = mass;
       ctx.fillRect(0, 0, w, h * 0.62);
       drawRain();
-      drawWallCloud();
+      // drawWallCloud();
       drawFunnel();
       drawGround();
       drawDust();
