@@ -136,7 +136,7 @@ function ServiceCard({ service }: { service: Service }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="btn-royal mt-6 inline-flex items-center justify-center gap-2 self-start rounded-md px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em]"
+        className="btn-royal mt-6 inline-flex items-center justify-center gap-2 self-start rounded-2xl px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em]"
       >
         {open ? (
           <>
