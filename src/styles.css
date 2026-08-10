@@ -62,26 +62,38 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.25rem;
+  --background: oklch(0.13 0.012 70);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.17 0.014 72);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.17 0.014 72);
+  --popover-foreground: oklch(0.95 0.012 85);
+  --primary: oklch(0.79 0.135 85);
+  --primary-foreground: oklch(0.14 0.014 70);
+  --secondary: oklch(0.22 0.016 74);
+  --secondary-foreground: oklch(0.93 0.02 85);
+  --muted: oklch(0.22 0.014 74);
+  --muted-foreground: oklch(0.72 0.022 82);
+  --accent: oklch(0.86 0.11 88);
+  --accent-foreground: oklch(0.14 0.014 70);
+  --destructive: oklch(0.6 0.21 27);
+  --destructive-foreground: oklch(0.98 0.003 248);
+  --border: oklch(0.34 0.04 82 / 45%);
+  --input: oklch(0.34 0.04 82 / 45%);
+  --ring: oklch(0.79 0.135 85);
+  --gold-1: oklch(0.72 0.11 78);
+  --gold-2: oklch(0.88 0.13 92);
+  --gradient-gold: linear-gradient(115deg, var(--gold-1), var(--gold-2) 45%, var(--gold-1));
+  --gradient-night: radial-gradient(
+      120% 90% at 50% -10%,
+      oklch(0.24 0.04 82 / 55%),
+      transparent 60%
+    ),
+    linear-gradient(180deg, oklch(0.12 0.012 70), oklch(0.1 0.01 70));
+  --shadow-gold: 0 20px 60px -25px oklch(0.79 0.135 85 / 45%);
+  --font-display: "Cinzel", serif;
+  --font-body: "Manrope", sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
