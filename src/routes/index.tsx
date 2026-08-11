@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { TornadoScene } from "@/components/TornadoScene";
 import { StormNetwork } from "@/components/StormNetwork";
 import { Radio, Share2, Wifi, Building2 } from "lucide-react";
+import stormVideo from "@/assets/storm.mp4.asset.json";
 
 const TITLE = "Tofan Net — Wireless Internet in Herat";
 const DESC =
@@ -30,8 +30,19 @@ function Index() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden">
-        <TornadoScene className="pointer-events-none absolute inset-0 h-full w-full" />
-        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-40 mix-blend-screen" />
+        <video
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          src={stormVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-background/55" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/20 to-background" />
+        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-30 mix-blend-screen" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
