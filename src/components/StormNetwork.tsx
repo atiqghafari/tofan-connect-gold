@@ -56,7 +56,9 @@ export function StormNetwork({ density = 1, className }: Props) {
       cy = h * 0.5;
 
       const arms = 5;
-      const count = Math.round(Math.min(320, (w * h) / 5200) * density);
+      // Capped lower count — the real storm video now carries the motion;
+      // this canvas is just a subtle gold-dust overlay, so keep it light.
+      const count = Math.round(Math.min(160, (w * h) / 11000) * density);
       parts = Array.from({ length: count }, (_, i) => {
         const arm = i % arms;
         const rad = Math.pow(Math.random(), 0.55) * Math.max(w, h) * 0.68;
@@ -69,7 +71,7 @@ export function StormNetwork({ density = 1, className }: Props) {
           sp: (0.004 + Math.random() * 0.006) * (1 - rad / (Math.max(w, h) * 0.85)) + 0.001,
           r: Math.random() * 1.7 + 0.35,
           a: 0.12 + Math.random() * 0.48,
-          node: i % 6 === 0,
+          node: i % 8 === 0,
           drift: (Math.random() - 0.5) * 0.18,
         };
       });
@@ -177,10 +179,9 @@ export function StormNetwork({ density = 1, className }: Props) {
         ctx.fillStyle = p.node
           ? `rgba(246, 212, 128, ${depthA})`
           : `rgba(200, 162, 88, ${depthA * 0.72})`;
-        ctx.shadowBlur = p.node ? 14 : 0;
-        ctx.shadowColor = "rgba(232, 192, 112, 0.6)";
+        // No per-particle shadowBlur — it forces expensive GPU blur passes on
+        // every frame. Nodes get a brighter fill instead to keep the glow feel.
         ctx.fill();
-        ctx.shadowBlur = 0;
       }
 
       // --- network links between nodes ---
