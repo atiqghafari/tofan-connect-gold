@@ -38,30 +38,30 @@ function Index() {
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
           </p>
-          <h1 className="mt-6 text-5xl uppercase leading-tight sm:text-8xl">
-            <span className="text-gold">Tofan Net</span>
+          <h1 className="mt-6 text-6xl font-semibold leading-[0.95] tracking-tight sm:text-9xl">
+            <span className="text-gold">Tofan</span>
+            <span className="text-foreground/90"> Net</span>
           </h1>
           <div className="rule-gold mt-6 w-56 max-w-full" />
-          <p className="mt-6 text-sm uppercase tracking-[0.32em] text-muted-foreground sm:text-lg">
-            Connect Beyond Limits
+          <p className="mt-6 text-base font-light tracking-[0.18em] text-muted-foreground sm:text-2xl">
+            Connect beyond limits.
           </p>
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground/80 sm:text-base">
-            Wireless internet that cuts through the storm — engineered for the
-            terrain of Herat, built to keep you connected from the city core to
-            the farthest village.
+          <p className="mx-auto mt-7 max-w-xl text-sm leading-relaxed text-muted-foreground/80 sm:text-lg">
+            Wireless that cuts through the storm — engineered for Herat's
+            terrain, from the city core to the farthest village.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/services"
-              className="btn-royal rounded-2xl px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em]"
+              className="btn-royal rounded-2xl px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.2em]"
             >
-              Our Services
+              Explore services
             </Link>
             <Link
               to="/contact"
-              className="rounded-2xl border border-primary/50 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary/10"
+              className="rounded-2xl border border-primary/50 px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary/10"
             >
-              Get Connected
+              Get connected
             </Link>
           </div>
         </div>
