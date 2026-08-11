@@ -19,6 +19,8 @@ export function StormVideo({ className, rate = 0.55, fade = 2.2 }: Props) {
     let ready = false;
     let lastA = -1;
     let lastB = -1;
+    let cancelled = false;
+    let rafId = 0;
 
     const start = () => {
       if (ready || !a.duration || !isFinite(a.duration)) return;
@@ -36,9 +38,8 @@ export function StormVideo({ className, rate = 0.55, fade = 2.2 }: Props) {
       return Math.min(1, tIn / fade, tOut / fade);
     };
 
-    // Use the browser's video-frame callback when available (synced to the
-    // actual decoded frame, far cheaper than a 60fps RAF). Fall back to RAF.
     const tick = () => {
+      if (cancelled) return;
       const d = a.duration;
       if (ready && d && isFinite(d)) {
         const wa = weight(a, d);
@@ -46,7 +47,8 @@ export function StormVideo({ className, rate = 0.55, fade = 2.2 }: Props) {
         const sum = wa + wb || 1;
         const oa = wa / sum;
         const ob = wb / sum;
-        // only write to the DOM when the rounded opacity actually changes
+        // Only touch the DOM when opacity meaningfully changes — avoids
+        // fighting the compositor every frame and keeps playback smooth.
         if (Math.abs(oa - lastA) > 0.01) {
           a.style.opacity = String(oa);
           lastA = oa;
@@ -56,39 +58,26 @@ export function StormVideo({ className, rate = 0.55, fade = 2.2 }: Props) {
           lastB = ob;
         }
       }
-      rafLoop();
+      // Sync to the actual decoded video frame when available; otherwise RAF.
+      if ("requestVideoFrameCallback" in HTMLVideoElement.prototype) {
+        (a as HTMLVideoElement & {
+          requestVideoFrameCallback: (cb: () => void) => number;
+        }).requestVideoFrameCallback(tick);
+      } else {
+        rafId = requestAnimationFrame(tick);
+      }
     };
-
-    let rafLoop: () => void;
-    const raf = () => requestAnimationFrame(tick);
-    if ("requestVideoFrameCallback" in HTMLVideoElement.prototype) {
-      const vfcb = (_now: number, _meta: unknown) => {
-        tick();
-      };
-      rafLoop = () => a.requestVideoFrameCallback(vfcb as never);
-      rafLoop();
-    } else {
-      let id = 0;
-      rafLoop = () => {
-        id = requestAnimationFrame(tick);
-      };
-      rafLoop();
-      return () => {
-        cancelAnimationFrame(id);
-        a.removeEventListener("loadedmetadata", start);
-        b.removeEventListener("loadedmetadata", start);
-      };
-    }
 
     a.addEventListener("loadedmetadata", start);
     b.addEventListener("loadedmetadata", start);
     start();
+    tick();
 
     return () => {
-      if ("requestVideoFrameCallback" in HTMLVideoElement.prototype) {
-        a.removeEventListener("loadedmetadata", start);
-        b.removeEventListener("loadedmetadata", start);
-      }
+      cancelled = true;
+      cancelAnimationFrame(rafId);
+      a.removeEventListener("loadedmetadata", start);
+      b.removeEventListener("loadedmetadata", start);
     };
   }, [rate, fade]);
 
