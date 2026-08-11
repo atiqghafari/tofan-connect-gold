@@ -179,10 +179,9 @@ export function StormNetwork({ density = 1, className }: Props) {
         ctx.fillStyle = p.node
           ? `rgba(246, 212, 128, ${depthA})`
           : `rgba(200, 162, 88, ${depthA * 0.72})`;
-        ctx.shadowBlur = p.node ? 14 : 0;
-        ctx.shadowColor = "rgba(232, 192, 112, 0.6)";
+        // No per-particle shadowBlur — it forces expensive GPU blur passes on
+        // every frame. Nodes get a brighter fill instead to keep the glow feel.
         ctx.fill();
-        ctx.shadowBlur = 0;
       }
 
       // --- network links between nodes ---
