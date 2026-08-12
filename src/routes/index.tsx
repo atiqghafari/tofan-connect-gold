@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { StormNetwork } from "@/components/StormNetwork";
 import { Radio, Share2, Wifi, Building2 } from "lucide-react";
-import { StormVideo } from "@/components/StormVideo";
+import supercell from "@/assets/supercell.png.asset.json";
 
 const TITLE = "Tofan Net — Wireless Internet in Herat";
 const DESC =
@@ -30,10 +29,11 @@ function Index() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden">
-        <StormVideo className="pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/35 via-transparent to-background" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.42_0.06_74_/_45%)] via-[oklch(0.30_0.04_72_/_22%)] to-transparent mix-blend-soft-light" />
-        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-60 mix-blend-screen" />
+        <img
+          src={supercell.url}
+          alt="Supercell storm over open plains at sunset"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
