@@ -7,7 +7,7 @@ type Props = { className?: string; rate?: number; fade?: number };
  * Seamless storm loop: two offset video layers cross-fade into each other so the
  * clip never visibly restarts, played back slower for a heavier, more real motion.
  */
-export function StormVideo({ className, rate = 0.7, fade = 2.2 }: Props) {
+export function StormVideo({ className, rate = 0.45, fade = 2.2 }: Props) {
   const aRef = useRef<HTMLVideoElement | null>(null);
   const bRef = useRef<HTMLVideoElement | null>(null);
 
@@ -82,12 +82,14 @@ export function StormVideo({ className, rate = 0.7, fade = 2.2 }: Props) {
   }, [rate, fade]);
 
   const shared =
-    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity]";
+    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity] brightness-110 contrast-110 saturate-110 sepia-[0.22]";
 
   return (
     <div className={className} aria-hidden="true">
-      <video ref={aRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" />
-      <video ref={bRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" style={{ opacity: 0 }} />
+      <div className="absolute inset-0 scale-[1.45]">
+        <video ref={aRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" />
+        <video ref={bRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" style={{ opacity: 0 }} />
+      </div>
     </div>
   );
 }
