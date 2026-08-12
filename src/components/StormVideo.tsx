@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import stormVideo from "@/assets/storm.mp4.asset.json";
+import stormVideo from "@/assets/tornado-real.mp4.asset.json";
 
 type Props = { className?: string; rate?: number; fade?: number };
 
@@ -7,7 +7,7 @@ type Props = { className?: string; rate?: number; fade?: number };
  * Seamless storm loop: two offset video layers cross-fade into each other so the
  * clip never visibly restarts, played back slower for a heavier, more real motion.
  */
-export function StormVideo({ className, rate = 0.55, fade = 2.2 }: Props) {
+export function StormVideo({ className, rate = 0.7, fade = 2.2 }: Props) {
   const aRef = useRef<HTMLVideoElement | null>(null);
   const bRef = useRef<HTMLVideoElement | null>(null);
 
