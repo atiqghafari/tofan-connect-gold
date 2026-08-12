@@ -31,10 +31,9 @@ function Index() {
     <>
       <section className="relative min-h-screen overflow-hidden">
         <StormVideo className="pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute inset-0 bg-background/15" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/45 via-transparent to-background" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.42_0.06_74_/_40%)] via-[oklch(0.30_0.04_72_/_20%)] to-transparent mix-blend-soft-light" />
-        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-55 mix-blend-screen" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/35 via-transparent to-background" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.42_0.06_74_/_45%)] via-[oklch(0.30_0.04_72_/_22%)] to-transparent mix-blend-soft-light" />
+        <StormNetwork className="pointer-events-none absolute inset-0 h-full w-full opacity-60 mix-blend-screen" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan

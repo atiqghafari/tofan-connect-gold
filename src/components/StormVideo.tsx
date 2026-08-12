@@ -82,11 +82,11 @@ export function StormVideo({ className, rate = 0.45, fade = 2.2 }: Props) {
   }, [rate, fade]);
 
   const shared =
-    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity] brightness-[1.25] contrast-[1.15] saturate-[1.15]";
+    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity] brightness-110 contrast-110 saturate-110 sepia-[0.22]";
 
   return (
     <div className={className} aria-hidden="true">
-      <div className="absolute inset-0 scale-[1.35]">
+      <div className="absolute inset-0 scale-[1.45]">
         <video ref={aRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" />
         <video ref={bRef} className={shared} src={stormVideo.url} autoPlay muted loop playsInline preload="auto" style={{ opacity: 0 }} />
       </div>
