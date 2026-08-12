@@ -82,7 +82,7 @@ export function StormVideo({ className, rate = 0.45, fade = 2.2 }: Props) {
   }, [rate, fade]);
 
   const shared =
-    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity]";
+    "pointer-events-none absolute inset-0 h-full w-full object-cover will-change-[opacity] brightness-[1.25] contrast-[1.15] saturate-[1.15]";
 
   return (
     <div className={className} aria-hidden="true">
