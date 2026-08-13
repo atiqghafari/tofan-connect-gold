@@ -34,6 +34,8 @@ function Index() {
           alt="Supercell storm over open plains at sunset"
           className="storm-alive pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.1_0.01_70/85%)_80%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/70 via-background/25 to-transparent" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
