@@ -29,14 +29,16 @@ function Index() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden">
-        <img
-          src={supercell.url}
-          alt="Supercell storm over open plains at sunset"
-          className="storm-alive pointer-events-none absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background/55 via-transparent to-transparent" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-background/45" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,transparent_0%,oklch(0.1_0.01_70/55%)_75%)]" />
+        <div className="storm-alive pointer-events-none absolute left-1/2 top-1/2 h-[300%] w-[300%] -translate-x-1/2 -translate-y-1/2">
+          <img
+            src={supercell.url}
+            alt="Supercell storm over open plains at sunset"
+            className="h-full w-full object-cover object-[75%_55%]"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background/45 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-background/35" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,transparent_0%,oklch(0.1_0.01_70/45%)_70%)]" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
