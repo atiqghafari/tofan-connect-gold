@@ -33,12 +33,12 @@ function Index() {
           <img
             src={supercell.url}
             alt="Supercell storm over open plains at sunset"
-            className="h-full w-full object-cover object-[55%_45%]"
+            className="h-full w-full object-cover object-[55%_55%] brightness-110 contrast-115 saturate-110"
           />
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/15 via-transparent to-background/15" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,transparent_0%,oklch(0.1_0.01_70/25%)_80%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/10" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,transparent_0%,oklch(0.1_0.01_70/20%)_80%)]" />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
