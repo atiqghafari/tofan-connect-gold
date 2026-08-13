@@ -32,7 +32,7 @@ function Index() {
         <img
           src={supercell.url}
           alt="Supercell storm over open plains at sunset"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          className="storm-alive pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
