@@ -231,16 +231,3 @@
     animation: none;
   }
 }
-
-@utility btn-royal-unused {
-  background: var(--gradient-gold);
-  color: var(--primary-foreground);
-  box-shadow: var(--shadow-gold);
-  transition:
-    filter 0.3s ease,
-    transform 0.3s ease;
-  &:hover {
-    filter: brightness(1.08);
-    transform: translateY(-2px);
-  }
-}
