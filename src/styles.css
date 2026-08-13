@@ -210,16 +210,16 @@
 
 @keyframes storm-turn {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1.55) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1.55) rotate(360deg);
   }
 }
 
 @utility storm-alive {
-  animation: storm-turn 140s linear infinite;
-  transform-origin: 62% 42%;
+  animation: storm-turn 180s linear infinite;
+  transform-origin: 65% 45%;
   will-change: transform;
 }
 
