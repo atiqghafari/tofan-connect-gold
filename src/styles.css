@@ -223,16 +223,7 @@
   will-change: transform;
 }
 
-@keyframes storm-swirl-turn {
-  0% {
-    transform: scale(1.14) rotate(0deg);
-  }
-  100% {
-    transform: scale(1.14) rotate(-360deg);
-  }
-}
-
-/* soft-edged window around the rotating wall cloud */
+/* soft-edged window around the wall cloud — currently static */
 @utility storm-swirl-mask {
   -webkit-mask-image: radial-gradient(
     ellipse 40% 46% at 58% 48%,
@@ -244,9 +235,7 @@
 }
 
 @utility storm-swirl {
-  animation: storm-swirl-turn 150s linear infinite;
   transform-origin: 58% 48%;
-  will-change: transform;
 }
 
 @utility storm-swirl-inner-mask {
@@ -260,17 +249,11 @@
 }
 
 @utility storm-swirl-inner {
-  animation: storm-swirl-turn 70s linear infinite;
   transform-origin: 58% 48%;
-  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .storm-alive {
-    animation: none;
-  }
-  .storm-swirl,
-  .storm-swirl-inner {
     animation: none;
   }
 }
