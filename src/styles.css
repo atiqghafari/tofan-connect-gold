@@ -223,8 +223,54 @@
   will-change: transform;
 }
 
+@keyframes storm-swirl-turn {
+  0% {
+    transform: scale(1.06) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.06) rotate(-360deg);
+  }
+}
+
+/* soft-edged window around the rotating wall cloud */
+@utility storm-swirl-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 24% 30% at 60% 50%,
+    #000 0%,
+    #000 42%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 24% 30% at 60% 50%, #000 0%, #000 42%, transparent 100%);
+}
+
+@utility storm-swirl {
+  animation: storm-swirl-turn 150s linear infinite;
+  transform-origin: 60% 50%;
+  will-change: transform;
+}
+
+@utility storm-swirl-inner-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 11% 14% at 60% 50%,
+    #000 0%,
+    #000 35%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 11% 14% at 60% 50%, #000 0%, #000 35%, transparent 100%);
+}
+
+@utility storm-swirl-inner {
+  animation: storm-swirl-turn 70s linear infinite;
+  transform-origin: 60% 50%;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .storm-alive {
+    animation: none;
+  }
+  .storm-swirl,
+  .storm-swirl-inner {
     animation: none;
   }
 }
