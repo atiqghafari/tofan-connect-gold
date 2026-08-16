@@ -29,12 +29,29 @@ function Index() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden">
-        <div className="storm-alive pointer-events-none absolute left-1/2 top-1/2 h-[175%] w-[175%] -translate-x-1/2 -translate-y-1/2">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <img
             src={supercell.url}
             alt="Supercell storm over open plains at sunset"
-            className="h-full w-full object-cover object-[55%_55%] brightness-110 contrast-115 saturate-110"
+            className="absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
           />
+          {/* only the mesocyclone / funnel area rotates */}
+          <div className="storm-swirl-mask absolute inset-0">
+            <img
+              src={supercell.url}
+              alt=""
+              aria-hidden
+              className="storm-swirl absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
+            />
+          </div>
+          <div className="storm-swirl-inner-mask absolute inset-0">
+            <img
+              src={supercell.url}
+              alt=""
+              aria-hidden
+              className="storm-swirl-inner absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
+            />
+          </div>
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/10" />
