@@ -30,27 +30,29 @@ function Index() {
     <>
       <section className="relative min-h-screen overflow-hidden">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <img
-            src={supercell.url}
-            alt="Supercell storm over open plains at sunset"
-            className="absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
-          />
-          {/* only the mesocyclone / funnel area rotates */}
-          <div className="storm-swirl-mask absolute inset-0">
+          <div className="absolute left-1/2 top-1/2 aspect-[697/429] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
             <img
               src={supercell.url}
-              alt=""
-              aria-hidden
-              className="storm-swirl absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
+              alt="Supercell storm over open plains at sunset"
+              className="absolute inset-0 h-full w-full scale-[1.06] object-fill brightness-110 contrast-115 saturate-110"
             />
-          </div>
-          <div className="storm-swirl-inner-mask absolute inset-0">
-            <img
-              src={supercell.url}
-              alt=""
-              aria-hidden
-              className="storm-swirl-inner absolute inset-0 h-full w-full scale-110 object-cover object-center brightness-110 contrast-115 saturate-110"
-            />
+            {/* only the mesocyclone / funnel area rotates */}
+            <div className="storm-swirl-mask absolute inset-0">
+              <img
+                src={supercell.url}
+                alt=""
+                aria-hidden
+                className="storm-swirl absolute inset-0 h-full w-full object-fill brightness-110 contrast-115 saturate-110"
+              />
+            </div>
+            <div className="storm-swirl-inner-mask absolute inset-0">
+              <img
+                src={supercell.url}
+                alt=""
+                aria-hidden
+                className="storm-swirl-inner absolute inset-0 h-full w-full object-fill brightness-110 contrast-115 saturate-110"
+              />
+            </div>
           </div>
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
