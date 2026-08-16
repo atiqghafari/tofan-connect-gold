@@ -33,7 +33,7 @@ function Index() {
             <img
               src={supercell.url}
               alt="Supercell storm over open plains at sunset"
-              className="absolute inset-0 h-full w-full scale-[1.06] object-fill brightness-110 contrast-115 saturate-110"
+              className="absolute inset-0 h-full w-full scale-[1.14] object-fill brightness-110 contrast-115 saturate-110"
             />
             {/* only the mesocyclone / funnel area rotates */}
             <div className="storm-swirl-mask absolute inset-0">
@@ -54,7 +54,7 @@ function Index() {
             </div>
           </div>
         <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/10 to-background/80" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,transparent_0%,oklch(0.1_0.01_70/25%)_80%)]" />
       </div>
 
