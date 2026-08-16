@@ -28,13 +28,12 @@ const highlights = [
 function Index() {
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
           <div className="absolute left-1/2 top-1/2 aspect-[697/429] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
             <img
               src={supercell.url}
               alt="Supercell storm over open plains at sunset"
-              className="absolute inset-0 h-full w-full scale-[1.06] object-fill brightness-110 contrast-115 saturate-110"
+              className="absolute inset-0 h-full w-full scale-[1.14] object-fill brightness-110 contrast-115 saturate-110"
             />
             {/* only the mesocyclone / funnel area rotates */}
             <div className="storm-swirl-mask absolute inset-0">
@@ -54,10 +53,12 @@ function Index() {
               />
             </div>
           </div>
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/10" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,transparent_0%,oklch(0.1_0.01_70/20%)_80%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/10 to-background/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,transparent_0%,oklch(0.1_0.01_70/25%)_80%)]" />
+      </div>
+
+      <section className="relative min-h-screen">
         <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
           <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
             Herat · Afghanistan
