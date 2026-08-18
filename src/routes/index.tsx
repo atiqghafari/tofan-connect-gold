@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Radio, Share2, Wifi, Building2 } from "lucide-react";
-import supercell from "@/assets/supercell.png.asset.json";
+import { Radio, Share2, Wifi, Building2, ChevronDown } from "lucide-react";
+import heroStorm from "@/assets/hero-storm.jpg.asset.json";
 
 const TITLE = "Tofan Net — Wireless Internet in Herat";
 const DESC =
@@ -28,76 +28,68 @@ const highlights = [
 function Index() {
   return (
     <>
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-1/2 aspect-[697/429] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
-            <img
-              src={supercell.url}
-              alt="Supercell storm over open plains at sunset"
-              className="absolute inset-0 h-full w-full scale-[1.14] object-fill brightness-110 contrast-115 saturate-110"
-            />
-            {/* only the mesocyclone / funnel area rotates */}
-            <div className="storm-swirl-mask absolute inset-0">
-              <img
-                src={supercell.url}
-                alt=""
-                aria-hidden
-                className="storm-swirl absolute inset-0 h-full w-full object-fill brightness-110 contrast-115 saturate-110"
-              />
-            </div>
-            <div className="storm-swirl-inner-mask absolute inset-0">
-              <img
-                src={supercell.url}
-                alt=""
-                aria-hidden
-                className="storm-swirl-inner absolute inset-0 h-full w-full object-fill brightness-110 contrast-115 saturate-110"
-              />
-            </div>
-          </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/10 to-background/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,transparent_0%,oklch(0.1_0.01_70/25%)_80%)]" />
-      </div>
+      <section className="relative isolate overflow-hidden border-b border-primary/30">
+        <img
+          src={heroStorm.url}
+          alt="Supercell storm with tornado over the lights of Herat at sunset"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/55 via-background/20 to-background/70" />
 
-      <section className="relative min-h-screen">
-        <div className="relative mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center px-5 py-24 text-center">
-          <p className="text-[0.65rem] uppercase tracking-[0.5em] text-primary sm:text-xs">
-            Herat · Afghanistan
+        <div className="mx-auto flex min-h-[86vh] max-w-5xl flex-col items-center justify-center px-5 py-24 text-center">
+          <p className="text-[0.7rem] uppercase tracking-[0.45em] text-primary sm:text-sm">
+            Herat &nbsp;·&nbsp; Afghanistan
           </p>
-          <h1 className="mt-6 text-6xl font-semibold leading-[0.95] tracking-tight sm:text-9xl">
-            <span className="text-gold">Tofan</span>
-            <span className="text-foreground/90"> Net</span>
+          <div className="diamond-rule mt-5 w-48 max-w-full" />
+          <h1 className="mt-4 font-display text-5xl uppercase leading-[1] tracking-[0.04em] sm:text-8xl">
+            <span className="text-gold">Tofan</span>{" "}
+            <span className="text-foreground">Net</span>
           </h1>
-          <div className="rule-gold mt-6 w-56 max-w-full" />
-          <p className="mt-6 text-base font-light tracking-[0.18em] text-muted-foreground sm:text-2xl">
-            Connect beyond limits.
+          <p className="mt-5 font-display text-lg uppercase tracking-[0.35em] text-foreground sm:text-3xl">
+            Connect Beyond Limits.
           </p>
-          <p className="mx-auto mt-7 max-w-xl text-sm leading-relaxed text-muted-foreground/80 sm:text-lg">
-            Wireless that cuts through the storm — engineered for Herat's
-            terrain, from the city core to the farthest village.
+          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Wireless connectivity engineered for Herat's terrain — from the city
+            core to the farthest village.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/services"
-              className="btn-royal rounded-2xl px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.2em]"
+              className="btn-royal clip-bevel px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em]"
             >
               Explore services
             </Link>
             <Link
               to="/contact"
-              className="rounded-2xl border border-primary/50 px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary/10"
+              className="clip-bevel border border-primary/60 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary/10"
             >
               Get connected
             </Link>
           </div>
+          <div className="mt-14 flex flex-col items-center gap-1 text-primary/80">
+            <span className="flex h-9 w-5 items-start justify-center rounded-full border border-primary/60 p-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            </span>
+            <ChevronDown className="h-4 w-4 animate-bounce" />
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-[0.4em] text-primary">Our Services</p>
+          <h2 className="mt-3 font-display text-2xl uppercase tracking-[0.06em] text-foreground sm:text-4xl">
+            Connectivity Without Limits
+          </h2>
+          <div className="diamond-rule mx-auto mt-5 w-56 max-w-full" />
+        </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((h) => (
-            <div key={h.title} className="card-lux rounded-2xl p-6">
-              <h.icon className="h-6 w-6 text-primary" />
-              <h2 className="mt-5 text-sm uppercase tracking-[0.18em] text-foreground">{h.title}</h2>
+            <div key={h.title} className="card-lux clip-bevel p-7 text-center">
+              <h.icon className="mx-auto h-9 w-9 text-primary" strokeWidth={1.5} />
+              <h3 className="mt-5 font-display text-sm uppercase tracking-[0.18em] text-primary">
+                {h.title}
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{h.text}</p>
             </div>
           ))}
