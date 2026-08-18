@@ -35,6 +35,13 @@ function Index() {
             alt="Supercell storm with lightning over the lights of Herat at sunset"
             className="storm-live absolute inset-0 h-full w-full object-cover"
           />
+          {/* only the storm body itself moves, very slowly */}
+          <img
+            src={heroStorm.url}
+            alt=""
+            aria-hidden
+            className="storm-move-mask storm-breathe absolute inset-0 h-full w-full object-cover"
+          />
           {/* real lightning: the bolt from the photo flares up on its own rhythm */}
           <img
             src={heroStorm.url}
