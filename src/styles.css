@@ -244,6 +244,130 @@
   }
 }
 
+/* very slow living storm: barely-there drift + breathe */
+@keyframes storm-live-drift {
+  0% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate3d(-1.2%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+}
+
+@utility storm-live {
+  animation: storm-live-drift 90s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* isolate the photographed lightning bolt */
+@utility bolt-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 16% 30% at 13% 56%,
+    #000 0%,
+    #000 45%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 16% 30% at 13% 56%, #000 0%, #000 45%, transparent 100%);
+}
+
+@keyframes bolt-strike {
+  0%,
+  6%,
+  100% {
+    opacity: 0;
+    filter: brightness(1);
+  }
+  6.4% {
+    opacity: 1;
+    filter: brightness(3.4) contrast(115%);
+  }
+  7.2% {
+    opacity: 0.1;
+  }
+  7.8% {
+    opacity: 0.95;
+    filter: brightness(3) contrast(115%);
+  }
+  9.5% {
+    opacity: 0;
+  }
+  38% {
+    opacity: 0;
+  }
+  38.5% {
+    opacity: 1;
+    filter: brightness(3.8) contrast(120%);
+  }
+  40% {
+    opacity: 0.15;
+  }
+  40.6% {
+    opacity: 0.7;
+  }
+  42% {
+    opacity: 0;
+  }
+}
+
+@utility bolt-flash {
+  opacity: 0;
+  animation: bolt-strike 14s linear infinite;
+  will-change: opacity, filter;
+}
+
+@keyframes sky-flash {
+  0%,
+  6.2%,
+  100% {
+    opacity: 0;
+  }
+  6.6% {
+    opacity: 0.5;
+  }
+  8.5% {
+    opacity: 0.12;
+  }
+  10% {
+    opacity: 0;
+  }
+  38.4% {
+    opacity: 0;
+  }
+  38.8% {
+    opacity: 0.6;
+  }
+  41% {
+    opacity: 0.1;
+  }
+  42.5% {
+    opacity: 0;
+  }
+}
+
+@utility sky-flash {
+  background: radial-gradient(
+    ellipse 55% 60% at 16% 52%,
+    oklch(0.98 0.02 250 / 55%),
+    oklch(0.9 0.03 250 / 12%) 45%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: sky-flash 14s linear infinite;
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storm-live,
+  .bolt-flash,
+  .sky-flash {
+    animation: none;
+  }
+}
+
 @utility storm-alive {
   animation: storm-turn 180s linear infinite;
   transform-origin: 50% 50%;

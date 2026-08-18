@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Radio, Share2, Wifi, Building2, ChevronDown } from "lucide-react";
-import heroStorm from "@/assets/hero-storm.jpg.asset.json";
+import heroStorm from "@/assets/storm-hero.png.asset.json";
 
 const TITLE = "Tofan Net — Wireless Internet in Herat";
 const DESC =
@@ -29,11 +29,21 @@ function Index() {
   return (
     <>
       <section className="relative isolate overflow-hidden border-b border-primary/30">
-        <img
-          src={heroStorm.url}
-          alt="Supercell storm with tornado over the lights of Herat at sunset"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-        />
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src={heroStorm.url}
+            alt="Supercell storm with lightning over the lights of Herat at sunset"
+            className="storm-live absolute inset-0 h-full w-full object-cover"
+          />
+          {/* real lightning: the bolt from the photo flares up on its own rhythm */}
+          <img
+            src={heroStorm.url}
+            alt=""
+            aria-hidden
+            className="bolt-mask bolt-flash absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="sky-flash absolute inset-0" />
+        </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/55 via-background/20 to-background/70" />
 
         <div className="mx-auto flex min-h-[86vh] max-w-5xl flex-col items-center justify-center px-5 py-24 text-center">
