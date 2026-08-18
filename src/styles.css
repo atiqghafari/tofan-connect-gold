@@ -181,6 +181,33 @@
   background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
 }
 
+@utility diamond-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-2);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+@utility clip-bevel {
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+}
+
 @utility card-lux {
   background: linear-gradient(160deg, oklch(0.19 0.016 74 / 90%), oklch(0.14 0.012 70 / 90%));
   border: 1px solid oklch(0.5 0.07 85 / 30%);
