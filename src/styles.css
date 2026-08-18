@@ -257,9 +257,195 @@
   }
 }
 
+/* base photo stays perfectly still now */
 @utility storm-live {
-  animation: storm-live-drift 90s ease-in-out infinite;
+  will-change: auto;
+}
+
+/* only the storm/cloud region breathes, very slightly */
+@utility storm-move-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 46% 44% at 55% 42%,
+    #000 0%,
+    #000 40%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 46% 44% at 55% 42%, #000 0%, #000 40%, transparent 100%);
+}
+
+@keyframes storm-breathe {
+  0% {
+    transform: scale(1.015) translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.035) translate3d(-0.5%, -0.3%, 0) rotate(0.6deg);
+  }
+  100% {
+    transform: scale(1.015) translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@utility storm-breathe {
+  transform-origin: 55% 42%;
+  animation: storm-breathe 60s ease-in-out infinite;
   will-change: transform;
+}
+
+/* ---------- full page ambience: lightning + dust ---------- */
+
+@keyframes page-flash-a {
+  0%,
+  3%,
+  100% {
+    opacity: 0;
+  }
+  3.4% {
+    opacity: 0.55;
+  }
+  4.2% {
+    opacity: 0.08;
+  }
+  4.8% {
+    opacity: 0.4;
+  }
+  6.5% {
+    opacity: 0;
+  }
+}
+
+@keyframes page-flash-b {
+  0%,
+  44%,
+  100% {
+    opacity: 0;
+  }
+  44.5% {
+    opacity: 0.5;
+  }
+  45.6% {
+    opacity: 0.1;
+  }
+  46.2% {
+    opacity: 0.35;
+  }
+  48% {
+    opacity: 0;
+  }
+}
+
+@keyframes page-flash-c {
+  0%,
+  74%,
+  100% {
+    opacity: 0;
+  }
+  74.4% {
+    opacity: 0.45;
+  }
+  75.4% {
+    opacity: 0.06;
+  }
+  76% {
+    opacity: 0.3;
+  }
+  78% {
+    opacity: 0;
+  }
+}
+
+@utility page-flash {
+  opacity: 0;
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+@utility page-flash-1 {
+  background: radial-gradient(
+    ellipse 70% 55% at 20% 15%,
+    oklch(0.99 0.02 250 / 60%),
+    oklch(0.9 0.03 250 / 10%) 45%,
+    transparent 75%
+  );
+  animation: page-flash-a 17s linear infinite;
+}
+
+@utility page-flash-2 {
+  background: radial-gradient(
+    ellipse 80% 60% at 82% 70%,
+    oklch(0.99 0.02 250 / 55%),
+    oklch(0.9 0.03 250 / 10%) 45%,
+    transparent 78%
+  );
+  animation: page-flash-b 23s linear infinite;
+}
+
+@utility page-flash-3 {
+  background: radial-gradient(
+    ellipse 95% 70% at 50% 105%,
+    oklch(0.99 0.02 250 / 50%),
+    oklch(0.9 0.03 250 / 8%) 45%,
+    transparent 80%
+  );
+  animation: page-flash-c 31s linear infinite;
+}
+
+@keyframes dust-drift-1 {
+  0% {
+    transform: translate3d(-4%, 2%, 0);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0);
+  }
+  100% {
+    transform: translate3d(-4%, 2%, 0);
+  }
+}
+
+@keyframes dust-drift-2 {
+  0% {
+    transform: translate3d(5%, -2%, 0);
+  }
+  50% {
+    transform: translate3d(-5%, 3%, 0);
+  }
+  100% {
+    transform: translate3d(5%, -2%, 0);
+  }
+}
+
+@utility dust-layer {
+  background-repeat: repeat;
+  will-change: transform;
+}
+
+@utility dust-a {
+  background-image:
+    radial-gradient(1.6px 1.6px at 12% 22%, oklch(0.88 0.09 88 / 55%), transparent 60%),
+    radial-gradient(1.2px 1.2px at 38% 64%, oklch(0.85 0.08 85 / 45%), transparent 60%),
+    radial-gradient(1.8px 1.8px at 71% 31%, oklch(0.9 0.1 90 / 40%), transparent 60%),
+    radial-gradient(1.2px 1.2px at 88% 78%, oklch(0.86 0.09 86 / 45%), transparent 60%);
+  background-size: 420px 420px;
+  animation: dust-drift-1 48s ease-in-out infinite;
+}
+
+@utility dust-b {
+  background-image:
+    radial-gradient(1px 1px at 22% 48%, oklch(0.9 0.06 88 / 40%), transparent 60%),
+    radial-gradient(1.4px 1.4px at 58% 12%, oklch(0.84 0.08 84 / 35%), transparent 60%),
+    radial-gradient(1px 1px at 80% 60%, oklch(0.88 0.07 88 / 35%), transparent 60%);
+  background-size: 300px 300px;
+  animation: dust-drift-2 72s ease-in-out infinite;
+}
+
+@utility dust-c {
+  background-image:
+    radial-gradient(
+      ellipse 60% 40% at 10% 90%,
+      oklch(0.6 0.05 80 / 12%),
+      transparent 70%
+    ),
+    radial-gradient(ellipse 55% 35% at 92% 88%, oklch(0.6 0.05 80 / 10%), transparent 70%);
+  animation: dust-drift-1 110s ease-in-out infinite;
 }
 
 /* isolate the photographed lightning bolt */
@@ -364,6 +550,14 @@
   .storm-live,
   .bolt-flash,
   .sky-flash {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storm-breathe,
+  .page-flash,
+  .dust-layer {
     animation: none;
   }
 }
